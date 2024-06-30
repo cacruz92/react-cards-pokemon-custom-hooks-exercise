@@ -8,13 +8,17 @@ import useAxios from "./hooks/useAxios";
 function PlayingCardList() {
   const [cards, addCard, error] = useAxios(
     "https://deckofcardsapi.com/api/deck/new/draw/"
-  )
+  );
+
+  const handleAddCard = () => {
+    addCard();
+  }
   
   return (
     <div className="PlayingCardList">
       <h3>Pick a card, any card!</h3>
       <div>
-        <button onClick={addCard}>Add a playing card!</button>
+        <button onClick={handleAddCard}>Add a playing card!</button>
         {error && <p className="error">Error: {error.message}</p>}
       </div>
       <div className="PlayingCardList-card-area">
